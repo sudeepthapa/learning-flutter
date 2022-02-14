@@ -26,75 +26,144 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order'),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
-      ),
-      body: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.lightBlue.withOpacity(0.3)),
-            padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.all(20),
-            width: double.infinity,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Subtotal'),
-                    Text('\$4900'),
-                  ],
-                ),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Tax'),
-                    Text('\$900'),
-                  ],
-                ),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Delivery'),
-                    Text('\$40'),
-                  ],
-                ),
-                SizedBox(height: 8),
-                Divider(
-                  color: Colors.red,
-                ),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total',
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      '\$4440',
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+        title: const Text('Order'),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite))
         ],
+      ),
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Container(
+              height: 120,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.lightBlue,
+                      radius: 50,
+                      child: Icon(
+                        Icons.person,
+                        size: 50,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.lightBlue,
+                      radius: 50,
+                      backgroundImage: NetworkImage(
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            Container(width: double.infinity, height: 200, color: Colors.green),
+            const SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              height: 200,
+              color: Colors.green,
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 200,
+                    color: Colors.purple,
+                    child: Image.network(
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    left: -60,
+                    top: -10,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.deepOrange.withOpacity(0.4),
+                      ),
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      width: 400,
+                      height: 60,
+                      color: Colors.blueAccent.withOpacity(0.5),
+                      child: const Center(child: Text('Image Caption')),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-// Center
-// Container
-// Text
-// Row
-// Column
-// Scaffold
+// ListView
+// Stack
+// Positioned
+// Padding
+// SafeArea
+// Image Provider / Image Widget
