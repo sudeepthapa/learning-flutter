@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfirstapp/components/custom_circle_avatar.dart';
+import 'package:myfirstapp/screens/contact_screen.dart';
+import 'package:myfirstapp/screens/form_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,14 +12,35 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Order1'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite))
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ContactScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.contacts),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const FormScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.edit),
+          )
         ],
       ),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(height: 20),
-            ListTile(
+            const SizedBox(height: 20),
+            const ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.image),
                 radius: 30,
@@ -27,8 +50,8 @@ class HomeScreen extends StatelessWidget {
                   'This is a first flutter apploication that I am building today'),
               trailing: Icon(Icons.delete),
             ),
-            Divider(),
-            ListTile(
+            const Divider(),
+            const ListTile(
               leading: CircleAvatar(
                 child: Icon(Icons.image),
                 radius: 30,
