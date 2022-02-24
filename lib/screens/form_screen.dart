@@ -21,16 +21,16 @@ class _FormScreenState extends State<FormScreen> {
         children: [
           TextField(
             controller: _usernameController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Username',
               icon: Icon(Icons.person),
               helperText: 'Email and username accepted.',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          TextField(
+          const TextField(
             textCapitalization: TextCapitalization.sentences,
             maxLines: 3,
             decoration: InputDecoration(
@@ -38,10 +38,10 @@ class _FormScreenState extends State<FormScreen> {
               icon: Icon(Icons.biotech),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          TextField(
+          const TextField(
             maxLines: 1,
             obscureText: true,
             decoration: InputDecoration(
@@ -49,10 +49,10 @@ class _FormScreenState extends State<FormScreen> {
               icon: Icon(Icons.lock),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          TextField(
+          const TextField(
             maxLines: 1,
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
@@ -60,14 +60,14 @@ class _FormScreenState extends State<FormScreen> {
               icon: Icon(Icons.phone),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
           ElevatedButton(
             onPressed: () {
               print(_usernameController.text);
             },
-            child: Text('Submit'),
+            child: const Text('Submit'),
           )
         ],
       ),

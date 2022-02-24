@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ContactScreen extends StatelessWidget {
+class ContactScreen extends StatefulWidget {
   ContactScreen({Key? key}) : super(key: key);
 
-  final List<Map<String, dynamic>> contacts = [
+  @override
+  State<ContactScreen> createState() => _ContactScreenState();
+}
+
+class _ContactScreenState extends State<ContactScreen> {
+  List<Map<String, dynamic>> contacts = [
     {
       'name': 'Sudip',
       'phone': '32245232532',
@@ -26,14 +31,85 @@ class ContactScreen extends StatelessWidget {
     },
   ];
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+  deleteContact(email) {
+    contacts.removeWhere((element) => element['email'] == email);
+    setState(() {});
+  }
+
+  addContact(BuildContext context) {
+    Map<String, dynamic> contact = {
+      'name': _nameController.text,
+      'email': _emailController.text,
+      'phone': _phoneController.text
+    };
+
+    contacts.add(contact);
+    _nameController.clear();
+    _phoneController.clear();
+    _emailController.clear();
+    setState(() {});
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Contact')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      labelText: 'Name',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  TextField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  TextField(
+                    controller: _phoneController,
+                    decoration: const InputDecoration(
+                      labelText: 'Phone',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        addContact(context);
+                      },
+                      child: const Text('Save'))
+                ],
+              );
+            },
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
       body: SafeArea(
         child: ListView.separated(
           separatorBuilder: (context, int index) {
-            return Divider(
+            return const Divider(
               color: Colors.red,
             );
           },
@@ -41,6 +117,14 @@ class ContactScreen extends StatelessWidget {
           itemBuilder: (context, int index) {
             Map<String, dynamic> contact = contacts[index];
             return ListTile(
+              trailing: IconButton(
+                  onPressed: () {
+                    deleteContact(contact['email']);
+                  },
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  )),
               title: Text(
                 contact['name'],
                 style: TextStyle(
@@ -52,20 +136,6 @@ class ContactScreen extends StatelessWidget {
             );
           },
         ),
-        // child: ListView(
-        //   padding: const EdgeInsets.all(8.0),
-        //   children: contacts
-        //       .map(
-        //         (el) => ListTile(
-        //           leading: CircleAvatar(
-        //             child: Text(el['name'][0]),
-        //           ),
-        //           title: Text(el['name']),
-        //           subtitle: Text(el['phone']),
-        //         ),
-        //       )
-        //       .toList(),
-        // ),
       ),
     );
   }
