@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,8 +8,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('First Home Screen'),
+    return Center(
+      child: Platform.isIOS
+          ? CupertinoButton(child: Text('Click Me'), onPressed: () {})
+          : ElevatedButton(onPressed: () {}, child: Text('Click here')),
     );
   }
 }
