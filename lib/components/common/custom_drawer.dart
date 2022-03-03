@@ -7,38 +7,43 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: const EdgeInsets.all(10),
         children: [
-          DrawerHeader(
-            child: SizedBox(
-              height: 150,
-              width: double.maxFinite,
-              child: ListView(
-                children: const [
-                  CircleAvatar(
-                    child: Text('AB'),
-                    radius: 40,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Sudip',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  Text(
-                    'sudeptech@gmail.com',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ],
+          // DrawerHeader(
+          //   child: SizedBox(
+          //     height: 150,
+          //     width: double.maxFinite,
+          //     child: ListView(
+          //       children: const [
+          //         CircleAvatar(
+          //           child: Text('AB'),
+          //           radius: 40,
+          //         ),
+          //         Padding(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: Text(
+          //             'Sudip',
+          //             textAlign: TextAlign.center,
+          //             style: TextStyle(fontSize: 20),
+          //           ),
+          //         ),
+          //         Text(
+          //           'sudeptech@gmail.com',
+          //           textAlign: TextAlign.center,
+          //           style: TextStyle(fontSize: 12),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          const UserAccountsDrawerHeader(
+              accountName: Text('AVCDSF'),
+              currentAccountPicture: CircleAvatar(
+                child: Icon(Icons.person),
               ),
-            ),
-          ),
-          const Divider(
-            color: Colors.grey,
-          ),
+              accountEmail: Text(
+                'ss@gmail.com',
+              )),
+
           const ListTile(
             title: Text('All mails'),
             leading: Icon(Icons.mail_outline),
