@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfirstapp/screens/HomeScreen.dart';
+import 'package:myfirstapp/screens/user_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: const HomeScreen(),
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (_) => const HomeScreen());
+          case '/detail':
+            Map<String, dynamic> args =
+                settings.arguments as Map<String, dynamic>;
+            return MaterialPageRoute(
+                builder: (_) => UserDetail(arguments: args));
+        }
+      },
     );
   }
 }

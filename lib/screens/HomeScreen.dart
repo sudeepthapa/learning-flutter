@@ -45,7 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Image.network(
                               '${MovieRepository.imageBaseURL}/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg')),
                       subtitle: Text(user.address!.geo.lat),
-                      title: Text(user.name),
+                      title: InkWell(
+                        child: Text(user.name),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/detail',
+                              arguments: {'id': user.id, 'name': user.name});
+                        },
+                      ),
                     );
                   });
             } else {
