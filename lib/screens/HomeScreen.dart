@@ -5,6 +5,7 @@ import 'package:myfirstapp/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:myfirstapp/repository/movie_repository.dart';
 import 'package:myfirstapp/repository/user_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -16,18 +17,36 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final UserRepository _userRepository = UserRepository();
   final MovieRepository _movieRepository = MovieRepository();
+  late String username;
+  late SharedPreferences prefs;
 
   @override
   void initState() {
     super.initState();
     _movieRepository.getTrendingMovies();
+    getLoggedInDetails();
+  }
+
+  getLoggedInDetails() async {
+    prefs = await SharedPreferences.getInstance();
+    username = prefs.getString('username') ?? '';
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Users'),
+        title: Text(username),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await prefs.remove('loggedIn');
+              await prefs.remove('username');
+              Navigator.pushReplacementNamed(context, '/login');
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Container(
         child: FutureBuilder(

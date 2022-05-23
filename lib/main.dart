@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfirstapp/screens/HomeScreen.dart';
+import 'package:myfirstapp/screens/login_screen.dart';
 import 'package:myfirstapp/screens/user_detail.dart';
 
 void main() {
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      initialRoute: '/',
+      initialRoute: '/login',
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(builder: (_) => const HomeScreen());
+          case '/login':
+            return MaterialPageRoute(builder: (_) => const LoginScreen());
           case '/detail':
             Map<String, dynamic> args =
                 settings.arguments as Map<String, dynamic>;
