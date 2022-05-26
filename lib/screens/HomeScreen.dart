@@ -29,14 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   getLoggedInDetails() async {
     prefs = await SharedPreferences.getInstance();
-    username = prefs.getString('username') ?? '';
+    String name = prefs.getString('username') ?? '';
+    setState(() {
+      username = name;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome $username'),
+        title: Text('Welcome $username!'),
         actions: [
           IconButton(
             onPressed: () async {
