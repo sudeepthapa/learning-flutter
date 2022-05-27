@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:myfirstapp/components/todo_item.dart';
+import 'package:myfirstapp/providers/todos_provider.dart';
+import 'package:provider/provider.dart';
 
 class TodoList extends StatelessWidget {
-  List<String> todos;
-  TodoList({required this.todos, Key? key}) : super(key: key);
+  const TodoList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: todos.length,
-      itemBuilder: (BuildContext context, int index) {
-        return TodoItem(todo: todos[index]);
-      },
-    );
+    return Consumer<TodosProvider>(builder: (context, provider, _) {
+      return ListView.builder(
+        itemCount: provider.todos.length,
+        itemBuilder: (BuildContext context, int index) {
+          return TodoItem(todo: provider.todos[index]);
+        },
+      );
+    });
   }
 }

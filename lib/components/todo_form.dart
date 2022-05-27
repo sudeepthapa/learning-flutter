@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstapp/providers/todos_provider.dart';
+import 'package:provider/provider.dart';
 
-class TodoForm extends StatelessWidget {
-  Function addTodoItem;
-  TodoForm({required this.addTodoItem, Key? key}) : super(key: key);
+class TodoForm extends StatefulWidget {
+  TodoForm({Key? key}) : super(key: key);
+
+  @override
+  State<TodoForm> createState() => _TodoFormState();
+}
+
+class _TodoFormState extends State<TodoForm> {
   TextEditingController todoController = TextEditingController();
+
+  @override
+  void dispose() {
+    todoController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +36,10 @@ class TodoForm extends StatelessWidget {
         ),
         ElevatedButton(
             onPressed: () {
-              addTodoItem(todoController.text);
+              Provider.of<TodosProvider>(context, listen: false)
+                  .addTodo(todoController.text);
               FocusScope.of(context).unfocus();
+              todoController.clear();
             },
             child: const Text('Add'))
       ],
