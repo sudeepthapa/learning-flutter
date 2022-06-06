@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstapp/providers/index.dart';
 import 'package:myfirstapp/providers/todos_provider.dart';
 import 'package:myfirstapp/screens/home_page.dart';
 import 'package:provider/provider.dart';
@@ -12,8 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<TodosProvider>(
-      create: (BuildContext context) => TodosProvider(),
+    return MultiProvider(
+      providers: providers,
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
