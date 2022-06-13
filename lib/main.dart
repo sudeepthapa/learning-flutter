@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myfirstapp/providers/index.dart';
 import 'package:myfirstapp/providers/todos_provider.dart';
 import 'package:myfirstapp/screens/home_page.dart';
+import 'package:myfirstapp/screens/image_picker_demo.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(),
+        home: const ImagePickerDemo(),
       ),
     );
   }
