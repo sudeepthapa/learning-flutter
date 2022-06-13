@@ -18,3 +18,37 @@ class TodoList extends StatelessWidget {
     });
   }
 }
+
+
+// Provider   ---- > State management solution
+//      define a state (count)
+//      define state modifier function -> notifyListerners()
+// 
+// Consumer
+//      Widget / InitState / FutureBuilder
+//
+// MultiProvider ---> Top level widget lae wrap garxam
+
+
+
+
+// SINGLE WIDGET 1
+
+// define a state (count)
+
+// state modifier function (incrementCount, decrementCount, clearCount)
+
+// presentation widget - > display (COUNTER WIDGET  -> Text)
+
+// Widget / InitState -> state modifier function trigger
+
+
+// SINGLE WIDGET 2
+
+// define a state (todo)
+
+// state modifier function (incrementCount, decrementCount, clearCount)
+
+// presentation widget - > display (COUNTER WIDGET  -> Text)
+
+// Widget / InitState -> state modifier function trigger
