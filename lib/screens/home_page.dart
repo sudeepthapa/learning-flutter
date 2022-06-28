@@ -20,15 +20,31 @@ class _HomePageState extends State<HomePage> {
         preferredSize: Size.fromHeight(100),
         child: CustomAppBar(),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Container(
-            width: 400,
-            height: 400,
-            color: Colors.red
+          Expanded(
+            child: Container(
+              color: Colors.black,
+              child: ListView.builder(shrinkWrap: true, itemCount: 20, itemBuilder: (context, index){
+                return Container(
+                  width: 100,
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.grey)
+                  ),
+                  child: Text("Message $index", style: TextStyle(color: Colors.white),),
+                );
+              }),
+            ),
           ),
-          Positioned(child: Icon(Icons.abc), right: 10, top: 190,),
-          
+          Container(
+            child: const TextField(
+              decoration: InputDecoration(border: OutlineInputBorder(), prefixIcon: Icon(Icons.camera_alt)),
+            ),
+          )
         ],
       ),
     );
