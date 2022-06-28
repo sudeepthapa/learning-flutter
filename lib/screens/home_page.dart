@@ -15,30 +15,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    UserProvider provider = Provider.of<UserProvider>(context);
-    print(provider.isLoading);
-    print(provider.users);
     return Scaffold(
-      appBar: const PreferredSize(child: CustomAppBar(), preferredSize: Size.fromHeight(80),),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        width: double.infinity,
-        child: Column(
-          children: [
-            TodoForm(),
-            ElevatedButton(
-                onPressed: () {
-                  provider.getUsers();
-                },
-                child: const Text('Load Users')),
-            const SizedBox(
-              height: 20,
-            ),
-            const Expanded(
-              child: TodoList(),
-            )
-          ],
-        ),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(100),
+        child: CustomAppBar(),
+      ),
+      body: Stack(
+        children: [
+          Container(
+            width: 400,
+            height: 400,
+            color: Colors.red
+          ),
+          Positioned(child: Icon(Icons.abc), right: 10, top: 190,),
+          
+        ],
       ),
     );
   }
