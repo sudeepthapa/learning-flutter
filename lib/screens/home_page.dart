@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstapp/components/common/custom_appbar.dart';
 import 'package:myfirstapp/components/todo_form.dart';
 import 'package:myfirstapp/components/todo_list.dart';
 import 'package:myfirstapp/providers/users_provider.dart';
@@ -18,14 +19,7 @@ class _HomePageState extends State<HomePage> {
     print(provider.isLoading);
     print(provider.users);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('State Mangement'),
-        leading: provider.isLoading
-            ? const CircularProgressIndicator(
-                color: Colors.white,
-              )
-            : const SizedBox(),
-      ),
+      appBar: const PreferredSize(child: CustomAppBar(), preferredSize: Size.fromHeight(80),),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         width: double.infinity,
