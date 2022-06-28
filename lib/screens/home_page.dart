@@ -25,11 +25,11 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Container(
               color: Colors.black,
-              child: ListView.builder(shrinkWrap: true, itemCount: 20, itemBuilder: (context, index){
+              child: ListView.builder(reverse: true, itemCount: 20, itemBuilder: (context, index){
                 return Container(
                   width: 100,
                   alignment: Alignment.centerRight,
-                  margin: EdgeInsets.only(top: 8),
+                  margin: EdgeInsets.only(bottom: 8),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
